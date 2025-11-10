@@ -4,7 +4,10 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            AppModel appModel = new AppModel();
+            View mainMenuView = new View();
+            Controler controler = new Controler(mainMenuView, appModel);
+            controler.run();
         }
     }
 }
