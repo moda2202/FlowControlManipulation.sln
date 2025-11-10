@@ -45,10 +45,10 @@ namespace FlowControlManipulation.sln
                     RunSubMenu();
                     break;
                 case "2":
-                    //RepeatTextTenTimes();
+                    RepeatTextTenTimes();
                     break;
                 case "3":
-                    //GetThirdWord();
+                    GetThirdWord();
                     break;
                 default:
                     WriteError("Invalid choice. Press any key to try again.");
@@ -156,6 +156,47 @@ namespace FlowControlManipulation.sln
             } while (_isSubMenuRunning);
         }
 
+
+        // Method to repeat user input text ten times
+        private void RepeatTextTenTimes()
+        {
+            Console.Clear();
+            Console.Write("Please enter The text : ");
+
+            string userInput = ReadInput();
+
+            for (int i = 0; i < 10; i++)
+            {
+                Console.Write($"{i + 1}: {userInput}");
+            }
+            Console.WriteLine("\n\nPress any key to return...");
+            Console.ReadKey();
+
+        }
+
+
+        // Method to get the third word from a user input sentence
+        private void GetThirdWord()
+        {
+            Console.Clear();
+            Console.Write("Please enter a sentence with at least 3 words: ");
+            string userInput = ReadInput();
+
+            string[] words = userInput.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+            if (words.Length < 3)
+            {
+                WriteError("You must enter at least three words!");
+
+            }
+            else
+            {
+                Console.WriteLine($"The third word is: {words[2]}");
+            }
+
+            Console.WriteLine("Press any key to return...");
+            Console.ReadKey();
+        }
 
         // Helper method to determine ticket price based on age
         private int GetTicketPriceByAge(int age)
